@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Register | CSE-Cyber Security, Section B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- LOGIN -->
+  <section id="login" class="login">
+    <div class="login-art">
+      <div class="logo-line"><span class="logo"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></span>Class Register</div>
+      <div>
+        <h1>Every lecture counted. Every mark in view.</h1>
+        <p>CSE-Cyber Security, B.Tech V Sem, Section B. Attendance is kept for each subject, by the teacher who takes the class.</p>
+        <div id="loginArt" class="reg-art" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="login-side">
+      <div class="login-box">
+        <h2>Welcome back</h2>
+        <p class="note">Sign in to open your dashboard.</p>
+        <div class="roles" role="group" aria-label="Sign in as">
+          <button type="button" class="role active" data-role="student" aria-pressed="true">Student</button>
+          <button type="button" class="role" data-role="teacher" aria-pressed="false">Teacher</button>
+          <button type="button" class="role" data-role="mentor" aria-pressed="false">Mentor</button>
+        </div>
+        <form id="loginForm">
+          <label class="field"><span id="idLabel">Roll number</span>
+            <input id="loginId" autocomplete="username" required></label>
+          <label class="field">Password
+            <span class="pw"><input id="loginPass" type="password" autocomplete="current-password" required>
+            <button type="button" id="togglePw" class="link" aria-label="Show password">Show</button></span></label>
+          <p id="loginError" class="error" role="alert"></p>
+          <button class="btn primary wide" type="submit">Sign in</button>
+        </form>
+        <div class="demo">
+          <p>Try a demo account</p>
+          <button type="button" class="demo-fill" data-role="student" data-id="23CY084" data-pass="23cy084@123">Student</button>
+          <button type="button" class="demo-fill" data-role="student" data-id="23CY148" data-pass="23cy148@123">Vidya (148)</button>
+          <button type="button" class="demo-fill" data-role="teacher" data-id="T501" data-pass="teach@501">Teacher (CY501)</button>
+          <button type="button" class="demo-fill" data-role="mentor" data-id="M101" data-pass="mentor@123">Mentor</button>
+          <p class="demo-hint">Other subject teachers: T502, T503, T504 with password teach@502, teach@503, teach@504.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <div id="app" class="shell" hidden>
+    <aside class="side">
+      <div class="logo-line"><span class="logo"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></span>Class Register</div>
+      <nav class="nav" role="tablist" aria-label="Sections">
+        <button class="tab active" role="tab" aria-selected="true" data-tab="overview"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 14h7v7H3z"/></svg><span>Overview</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="attendance"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Attendance</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="marks"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><span>Marks</span></button>
+        <button class="tab staff-only" role="tab" aria-selected="false" data-tab="students"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6M17 5a3.5 3.5 0 0 1 0 7M22 20c0-3-2-5-5-5.7"/></svg><span>Students</span></button>
+        <button class="tab student-only" role="tab" aria-selected="false" data-tab="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Profile</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="timetable"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Timetable</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="calculator"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></svg><span>Calculator</span></button>
+      </nav>
+      <div class="me">
+        <span id="avatar"></span>
+        <div class="me-text"><b id="who"></b><small id="roleTag"></small></div>
+        <button id="logoutBtn" class="btn ghost" aria-label="Log out">Log out</button>
+      </div>
+    </aside>
+
+    <div class="content">
+      <header class="page-head">
+        <div><h1 id="pageTitle">Overview</h1><p id="pageDate" class="note"></p></div>
+        <input id="search" class="staff-only" type="search" placeholder="Search name or roll no." aria-label="Search students">
+      </header>
+
+      <section id="overview" class="panel active" role="tabpanel"><div id="ovBody"></div></section>
+      <section id="attendance" class="panel" role="tabpanel"><div id="attBody"></div></section>
+      <section id="marks" class="panel" role="tabpanel"><div id="mkBody"></div></section>
+      <section id="students" class="panel" role="tabpanel"><div id="stBody"></div></section>
+      <section id="profile" class="panel" role="tabpanel"><div id="pfBody"></div></section>
+      <section id="timetable" class="panel" role="tabpanel"><div id="ttBody"></div></section>
+      <section id="calculator" class="panel" role="tabpanel"><div id="calBody"></div></section>
+    </div>
+  </div>
+
+  <dialog id="stuDialog" class="dialog" aria-label="Student details"><div id="stuBody"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
